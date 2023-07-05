@@ -1,5 +1,7 @@
 
-package com.developer.employes.managment.Project;
+package com.developer.employes.managment.Service;
+
+import com.developer.employes.managment.Entity.EntityProject;
 
 import java.util.HashSet;
 import java.util.List;
@@ -13,10 +15,7 @@ public interface ProjectService {
 
     EntityProject projectively(EntityProject entityProject);
 
-
     String deleteProjectEntity(EntityProject entityProject);
 
-
-    //részletek
     HashSet<EntityProject> detailprojectofProject(EntityProject entityProject);
 }

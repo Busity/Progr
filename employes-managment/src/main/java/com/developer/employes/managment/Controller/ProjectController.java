@@ -1,7 +1,7 @@
-package com.developer.employes.managment.Project;
+package com.developer.employes.managment.Controller;
 
-import com.developer.employes.managment.Programmer.EntityProgrammer;
-import com.developer.employes.managment.Programmer.ProgrammerService;
+import com.developer.employes.managment.Entity.EntityProject;
+import com.developer.employes.managment.Service.ProjectService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -10,28 +10,28 @@ import java.util.List;
 @RequestMapping("/Project")
 public class ProjectController {
 
-    private final ProjectService projectService;
+    public final ProjectService projectService;
 
 
     public ProjectController(ProjectService projectService) {
         this.projectService = projectService;
     }
 
-    @GetMapping
+    @GetMapping("/list")
     public List<EntityProject> listofproject() {
         return projectService.listingproject();
     }
 
-    @PostMapping
+    @PostMapping("/Create")
     public EntityProject CreateProject(@RequestBody EntityProject entityProject){
         return projectService.saveinProject(entityProject);
     }
-    @PutMapping
+    @PutMapping("/Modify")
     public EntityProject ModifyProject(@RequestBody EntityProject entityProject){
         return projectService.projectively(entityProject);
     }
-    //@DeleteMapping
-    @DeleteMapping    public String Deleteprog(@RequestBody EntityProject entityProject){
+
+    @DeleteMapping  ("/delete")  public String Deleteprog(@RequestBody EntityProject entityProject){
         return projectService.deleteProjectEntity(entityProject);
     }
 

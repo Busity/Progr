@@ -1,6 +1,7 @@
 
-package com.developer.employes.managment.Project;
+package com.developer.employes.managment.Repository;
 
+import com.developer.employes.managment.Entity.EntityProject;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
