@@ -1,5 +1,6 @@
 package com.developer.employes.managment.Controller;
 
+import com.developer.employes.managment.Entity.EntityProgrammer;
 import com.developer.employes.managment.Entity.EntityProject;
 import com.developer.employes.managment.Service.ProjectService;
 import org.springframework.web.bind.annotation.*;
@@ -22,6 +23,10 @@ public class ProjectController {
         return projectService.listingproject();
     }
 
+    @GetMapping("/Details")
+    public List<EntityProject> listingproject(){
+        return projectService.listingproject();
+    }
     @PostMapping("/Create")
     public EntityProject CreateProject(@RequestBody EntityProject entityProject){
         return projectService.saveinProject(entityProject);

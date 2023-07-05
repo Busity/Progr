@@ -1,6 +1,7 @@
 package com.developer.employes.managment.Controller;
 
 import com.developer.employes.managment.Entity.EntityProgrammer;
+import com.developer.employes.managment.Entity.EntityProject;
 import com.developer.employes.managment.Entity.EntityProjectManager;
 import com.developer.employes.managment.Service.ProjectManagerService;
 import org.springframework.http.HttpStatus;
@@ -22,6 +23,11 @@ public class ProjectManagerController {
 
     @GetMapping("/list")
     public List<EntityProjectManager> listofproject() {
+        return projectManagerService.findAllProjectManager();
+    }
+
+    @GetMapping("/Details")
+    public List<EntityProjectManager> listingproject() {
         return projectManagerService.findAllProjectManager();
     }
 

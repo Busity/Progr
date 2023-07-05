@@ -13,9 +13,6 @@ import java.util.Date;
 public class EntityProjectManager {
 
 
-    @Id
-    @GeneratedValue
-
     @NotNull
     @Size(max = 20)
     @PrimaryKeyJoinColumn
