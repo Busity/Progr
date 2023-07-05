@@ -21,7 +21,7 @@ public class ProjectManagerController {
         this.projectManagerService = projectManagerService;
     }
 
-    @GetMapping("/list")
+    @GetMapping("/List")
     public List<EntityProjectManager> listofproject() {
         return projectManagerService.findAllProjectManager();
     }

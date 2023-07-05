@@ -12,6 +12,8 @@ import java.util.Date;
 @Table(name ="ProjectManager")
 public class EntityProjectManager {
 
+    @Id
+    @GeneratedValue
 
     @NotNull
     @Size(max = 20)
