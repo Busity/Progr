@@ -2,6 +2,7 @@
 package com.developer.employes.managment.Service;
 
 import com.developer.employes.managment.Entity.EntityProject;
+import org.springframework.http.ResponseEntity;
 
 import java.util.HashSet;
 import java.util.List;
@@ -15,7 +16,8 @@ public interface ProjectService {
 
     EntityProject projectively(EntityProject entityProject);
 
-    String deleteProjectEntity(EntityProject entityProject);
+    boolean deleteProjectEntity(ResponseEntity<EntityProject> entityProject);
 
     HashSet<EntityProject> detailprojectofProject(EntityProject entityProject);
-}
+
+    }

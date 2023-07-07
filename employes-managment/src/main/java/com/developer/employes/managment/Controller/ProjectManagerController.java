@@ -40,12 +40,11 @@ public class ProjectManagerController {
     public ResponseEntity<EntityProjectManager> ModifyProjectManager(@RequestBody EntityProjectManager entityProjectManager) {
         return (ResponseEntity<EntityProjectManager>) ResponseEntity.status(HttpStatus.ACCEPTED);
     }
-    //@DeleteMapping
-    @DeleteMapping ("/DeleteProjectManager")   public String Deleteprog(@RequestBody EntityProjectManager entityProjectManager ){
-        return projectManagerService.deleteProjectManagerown(entityProjectManager);
-//Van visszatérési érték,mert a feladat,úgy kéri ne legyen törölve.
+    @DeleteMapping
+    public ResponseEntity<EntityProjectManager> Deleteprog(@RequestBody ResponseEntity<EntityProjectManager> entityProjectManager) {
+        return (ResponseEntity<EntityProjectManager>) ResponseEntity.status(HttpStatus.ACCEPTED);
     }
 
-}
+    }
 
 

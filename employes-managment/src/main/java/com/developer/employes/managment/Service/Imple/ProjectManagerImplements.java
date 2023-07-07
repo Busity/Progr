@@ -2,9 +2,6 @@ package com.developer.employes.managment.Service.Imple;
 
 import com.developer.employes.managment.Entity.EntityProject;
 import com.developer.employes.managment.Entity.EntityProjectManager;
-import com.developer.employes.managment.Repository.ProgrammerRepository;
-import com.developer.employes.managment.Repository.ProjectManagerRepository;
-import com.developer.employes.managment.Service.ProgrammerService;
 import com.developer.employes.managment.Service.ProjectManagerService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -37,13 +34,16 @@ public class ProjectManagerImplements implements ProjectManagerService {
             }
             }
 
-         @Override
-         public String deleteProjectManagerown(EntityProjectManager entityProjectManager) {
-         if (entityProjectManager.isDelete() == false)
-            return entityProjectManager.isDelete()+("Not Deleted");
-            else
-            return entityProjectManager.isDelete()+("Deleted Flag");
-            }
+
+         public boolean deleteProjectManagerown(ResponseEntity<EntityProjectManager> entityProjectManager) {
+             if (entityProjectManager.getBody().isDelete() == false) {
+                 return Boolean.parseBoolean(ResponseEntity.badRequest() + ("Cant delete this project"));
+             } else if (entityProjectManager.getBody().isDelete() == true){
+                 ProjectManagerRepository.save(entityProjectManager.getBody());
+                 return Boolean.parseBoolean(ResponseEntity.accepted() + ("Deleted Flag"));
+             }
+             return entityProjectManager.getStatusCode().is4xxClientError();
+         }
 
          public ResponseEntity<String> Update(EntityProjectManager entityprojectmanager) {
             if (entityprojectmanager.existsEntityProjectManagerByEmail(entityprojectmanager.getProjEmail())) {

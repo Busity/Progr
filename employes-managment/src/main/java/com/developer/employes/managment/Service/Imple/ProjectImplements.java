@@ -1,9 +1,9 @@
 
 package com.developer.employes.managment.Service.Imple;
 
-import com.developer.employes.managment.Entity.EntityProgrammer;
 import com.developer.employes.managment.Entity.EntityProject;
 import com.developer.employes.managment.Service.ProjectService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
@@ -25,21 +25,27 @@ public class ProjectImplements implements ProjectService {
 
     @Override
     public HashSet<EntityProject> detailprojectofProject(EntityProject entityProject) {
-        return (HashSet<EntityProject>) ProjectRepository.findAll();}
+        return (HashSet<EntityProject>) ProjectRepository.findAll();
+    }
 
     @Override
     public EntityProject saveinProject(EntityProject entityProject) {
-        return ProjectRepository.save(entityProject);}
+        return ProjectRepository.save(entityProject);
+    }
 
     @Override
     public EntityProject projectively(EntityProject entityProject) {
         return ProjectRepository.save(entityProject);
     }
 
-    public String deleteProjectEntity(EntityProject entityProject) {
-        if (entityProject.getDelete() == false)
-            return entityProject.getDelete()+("Not Deleted");
-        else
-            return (entityProject.getDelete())+("Deleted Flag");
-    }
-    }
+    public boolean deleteProjectEntity(ResponseEntity<EntityProject> entityProject) {
+        if (entityProject.getBody().getDelete() == false) {
+            return Boolean.parseBoolean(ResponseEntity.badRequest() + ("Cant delete this project"));
+        } else if (entityProject.getBody().getDelete() == true){
+            ProjectRepository.save(entityProject.getBody());
+            return Boolean.parseBoolean(ResponseEntity.accepted() + ("Deleted Flag"));
+        }
+        return entityProject.getStatusCode().is4xxClientError();
+        }
+        }
+

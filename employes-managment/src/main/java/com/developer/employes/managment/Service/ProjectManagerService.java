@@ -13,5 +13,6 @@ public interface ProjectManagerService {
 
     ResponseEntity<String> Update(EntityProjectManager entityprojectmanager);
 
-    String deleteProjectManagerown(EntityProjectManager entityProjectManager);
-}
+    boolean deleteProjectManagerown(ResponseEntity<EntityProjectManager> entityProjectManager);
+
+    }

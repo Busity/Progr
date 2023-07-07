@@ -1,8 +1,7 @@
 package com.developer.employes.managment.Service;
 
 import com.developer.employes.managment.Entity.EntityProgrammer;
-import com.developer.employes.managment.Entity.EntityProject;
-import com.developer.employes.managment.Entity.EntityProjectManager;
+import jdk.jfr.BooleanFlag;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
@@ -16,11 +15,14 @@ public interface ProgrammerService {
 
     List<EntityProgrammer> list(EntityProgrammer entityProgrammer);
 
+    //List<EntityProgrammer> findById(String id);
+
     ResponseEntity<String> MODIFY(EntityProgrammer entityProgrammer);
 
     ResponseEntity<String> Create(EntityProgrammer entityProgrammer);
 
-    String deleteprogrammer(EntityProgrammer entityProgrammer);
+
+    boolean deleteprogrammer(ResponseEntity<EntityProgrammer> entityProgrammer);
 
     }
 

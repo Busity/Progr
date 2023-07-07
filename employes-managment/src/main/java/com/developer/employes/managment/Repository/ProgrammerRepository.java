@@ -18,6 +18,4 @@ public interface ProgrammerRepository extends JpaRepository<EntityProgrammer, In
 
 
 
-
-
 }

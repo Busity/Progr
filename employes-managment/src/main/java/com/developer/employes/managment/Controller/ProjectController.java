@@ -3,6 +3,8 @@ package com.developer.employes.managment.Controller;
 import com.developer.employes.managment.Entity.EntityProgrammer;
 import com.developer.employes.managment.Entity.EntityProject;
 import com.developer.employes.managment.Service.ProjectService;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -36,9 +38,9 @@ public class ProjectController {
         return projectService.projectively(entityProject);
     }
 
-    @DeleteMapping  ("/delete")  public String Deleteprog(@RequestBody EntityProject entityProject){
-        return projectService.deleteProjectEntity(entityProject);
+    public ResponseEntity<EntityProject> Deleteprog(@RequestBody ResponseEntity<EntityProject> entityProject) {
+        return (ResponseEntity<EntityProject>) ResponseEntity.status(HttpStatus.ACCEPTED);
     }
 
-}
+    }
 
